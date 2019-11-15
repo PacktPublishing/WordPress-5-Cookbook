@@ -1,0 +1,15 @@
+#wpccp_author_profile{
+	padding: 20px;
+    background: #eee;
+    border: 1px solid #cfcfcf;
+}
+
+#wpccp_author_profile_image{
+	float: left;
+    margin: 10px;
+}
+
+#wpccp_author_profile_description{
+	margin-top: 10px;
+	line-height: 110%;
+}
