@@ -5,6 +5,7 @@
   $post_list = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1)); 
 ?>
 
+
 <?php if ( $post_list->have_posts() ) : ?>
   <div id="list-post-panel">
     <ul>

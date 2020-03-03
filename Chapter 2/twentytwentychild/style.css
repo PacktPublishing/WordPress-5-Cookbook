@@ -1,16 +1,17 @@
 /*
-Theme Name: Twenty Nineteen Child 
+Theme Name: Twenty Twenty Child 
 Theme URL:
-Description: Twenty Nineteen ChildTheme
+Description: Twenty Twenty ChildTheme
 Author: John Doe
 Author URL:
-Template: twentynineteen
+Template: twentytwenty
 Version: 1.0.0
-Text Domain: twentynineteen-child
+Text Domain: twentytwenty-child
 */
 
 
-.site-header {
+/*
+#site-header {
  background: #21c7d8;
 }
 
@@ -18,37 +19,35 @@ Text Domain: twentynineteen-child
 
 .wpc-home-menu-item{
  background: #1862a2;
- padding: 5px;
+ padding: 0 5px;
  border: 1px solid;
 }
 .wpc-home-menu-item a{
  color : #fff !important;
 }
 
-
-
 .wp-custom-header video,
 .wp-custom-header img,
 .wp-custom-header iframe {
-  position: fixed;
-  height: 300px !important;
-  width: auto;
+ position: fixed;
+ height: 300px !important;
+ width: auto;
 }
 
 @supports ( object-fit: cover ) {
 .wp-custom-header video,
 .wp-custom-header img,
 .wp-custom-header iframe {
-  height: 300px !important;
-  left: 0;
-  top: 0;
-  -o-object-fit: cover;
-  object-fit: cover;
-  width: 100%;
+ height: 300px !important;
+ left: 0;
+ top: 0;
+ -o-object-fit: cover;
+ object-fit: cover;
+ width: 100%;
  }
 }
 
-
+*/
 
 
 #list-post-panel ul { width : 100%; list-style:none; }

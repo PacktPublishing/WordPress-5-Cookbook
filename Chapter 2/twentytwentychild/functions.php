@@ -1,4 +1,6 @@
 <?php
+
+
 add_action( 'wp_enqueue_scripts', 'wpccp_chapter2_enqueue_parent_styles' );
 function wpccp_chapter2_enqueue_parent_styles() {
  wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
@@ -32,21 +34,20 @@ function wpccp_chapter2_conditional_user_content($content) {
 }
 add_filter('the_content', 'wpccp_chapter2_conditional_user_content');
 
+
 function wpccp_chapter2_validate_page_restrictions(){
   global $wp_query;
   if (! isset($wp_query->post->ID) ) {
     return;
   }
 
-  if(is_page('2') && ! is_user_logged_in() ){
+  if(is_page('35') && ! is_user_logged_in() ){
     $url = site_url();
     wp_redirect($url);
     exit;
   }
 }
 add_action('template_redirect', 'wpccp_chapter2_validate_page_restrictions');
-
-
 
 
 ?>
