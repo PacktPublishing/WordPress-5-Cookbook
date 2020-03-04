@@ -1,0 +1,29 @@
+/*
+Theme Name: Twenty Twenty Child 
+Theme URL:
+Description: Twenty Twenty ChildTheme
+Author: John Doe
+Author URL:
+Template: twentytwenty
+Version: 1.0.0
+Text Domain: twentytwenty-child
+*/
+
+
+
+#list-post-panel ul { width : 100%; list-style:none; }
+#list-post-panel li{ 
+ width: 31%;
+ margin: 1%;
+ padding: 1%;
+ float: left;
+ background: #eee;
+ list-style: none;
+ text-align: center;
+ border: 1px solid #cfcfcf; 
+}
+
+.post-list-featured-image img{ 
+ width: 100%;
+ height: 200px; 
+}
