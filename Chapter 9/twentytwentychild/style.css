@@ -1,0 +1,20 @@
+/*
+Theme Name: Twenty Twenty Child 
+Theme URL:
+Description: Twenty Twenty ChildTheme
+Author: John Doe
+Author URL:
+Template: twentytwenty
+Version: 1.0.0
+Text Domain: twentytwenty-child
+*/
+
+
+.wpccp_featured_products_title{
+text-align: center;
+}
+
+.wpccp_featured_products{
+padding: 20px; background: #eee;
+border: 1px solid #cfcfcf;
+}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: WPCookbook Chapter 9
  * Plugin URI: 
@@ -23,7 +24,7 @@ function wpccp_chapter9_register_product_type() {
                 parent::__construct( $product );
             }
             public function get_type( ) {
-                return  'simple_wpccp_support_package';
+                return 'simple_wpccp_support_package';
             }
         }
     }
@@ -34,8 +35,6 @@ function wpccp_chapter9_add_product( $product_types ){
     $product_types[ 'simple_wpccp_support_package' ] = __( 'Support Package' ,'wpccp' );
     return $product_types;
 }
-
-
 
 add_filter( 'woocommerce_product_data_tabs', 'wpccp_chapter9_hide_data_tabs' );
 function wpccp_chapter9_hide_data_tabs( $tabs) {
@@ -48,63 +47,56 @@ function wpccp_chapter9_hide_data_tabs( $tabs) {
 
 add_action( 'admin_footer', 'wpccp_chapter9_custom_js' );
 function wpccp_chapter9_custom_js() {
-    if ( 'product' != get_post_type() ){
-        return;
-    }
-    ?>
-    <script type='text/javascript'>
-        jQuery( document ).ready( function() {
-            jQuery("#product-type").change(function(){         
-                if(jQuery("#product-type").val() == 'simple_wpccp_support_package'){
-                    jQuery( '.options_group.pricing' ).addClass( 'show_if_simple_wpccp_support_package' ).show();
-                    jQuery("li.general_options.general_tab").addClass('show_if_simple_wpccp_support_package').show();
-                }
-            });
+ if ( 'product' != get_post_type() ){
+ return;
+ }
+ ?>
+ <script type='text/javascript'>
+   jQuery( document ).ready( function() {
+     jQuery("#product-type").change(function(){ 
+     if(jQuery("#product-type").val() == 'simple_wpccp_support_package'){
+       jQuery( '.options_group.pricing' ).addClass( 'show_if_simple_wpccp_support_package' ).show();
+        jQuery("li.general_options.general_tab").addClass('show_if_simple_wpccp_support_package').show();
+ }
+ });
 
-            jQuery("#product-type").trigger('change');
+ jQuery("#product-type").trigger('change');
         });
     </script><?php
 }
 
 add_filter( 'woocommerce_product_data_tabs', 'wpccp_chapter9_product_tabs' );
 function wpccp_chapter9_product_tabs( $tabs) {
-        $tabs['support'] = array(
-            'label'     => __( 'Support Package Data', 'wpccp_ch9' ),
-            'target'    => 'simple_wpccp_support_package_options',
-            'class'     => array( 'show_if_simple_wpccp_support_package' ),
-        );
-        return $tabs;
-    }
+  $tabs['support'] = array(
+    'label' => __( 'Support Package Data', 'wpccp_ch9' ),
+    'target' => 'simple_wpccp_support_package_options',
+    'class' => array( 'show_if_simple_wpccp_support_package' ),
+  );
+  return $tabs;
+}
 
 add_action( 'woocommerce_product_data_panels', 'wpccp_chapter9_tab_content' );
 function wpccp_chapter9_tab_content() {
-        global $post,$wpccp;
-        ?>
-        <div id='simple_wpccp_support_package_options' class='panel woocommerce_options_panel'><?php
-            
+  global $post,$wpccp; ?>
+  <div id='simple_wpccp_support_package_options' class='panel  woocommerce_options_panel'><?php
+    woocommerce_wp_text_input(
+     array( 'id' => 'wpccp_support_period',
+        'label' => __( 'Support Period', 'dm_product' ),
+        'desc_tip' => 'true', 'description' => __( 'Enter support period.', 'wpccp_ch9' ), 'type' => 'text',
+        'value' => get_post_meta( $post->ID, 'wpccp_support_period', true )
+ ) ); ?>
+  </div><?php
+}
 
-            woocommerce_wp_text_input(
-                array(
-                  'id' => 'wpccp_support_period',
-                  'label' => __( 'Support Period', 'dm_product' ),
-                  'desc_tip' => 'true',
-                  'description' => __( 'Enter support period.', 'wpccp_ch9' ),
-                  'type' => 'text',
-                  'value' => get_post_meta( $post->ID, 'wpccp_support_period', true )
-                )
-                );
-
-    ?>
-
-        </div><?php
-    }
-
-add_action( 'woocommerce_process_product_meta_simple_wpccp_support_package', 'wpccp_chapter9_save_product_fields'  );
+add_action( 'woocommerce_process_product_meta_simple_wpccp_support_package', 'wpccp_chapter9_save_product_fields' );
 function wpccp_chapter9_save_product_fields( $product_id ) {
-    if( current_user_can('manage_options') ){
-        $support_period = isset( $_POST['wpccp_support_period'] ) ? $_POST['wpccp_support_period'] : '';
-        update_post_meta( $product_id, 'wpccp_support_period', $support_period );
-    }
+  if( current_user_can('manage_options') ){
+    $support_period = isset( $_POST['wpccp_support_period'] ) ? $_POST['wpccp_support_period'] : '';
+    update_post_meta( $product_id, 'wpccp_support_period', $support_period );
+  }
 }
 
 
+add_action( "woocommerce_simple_wpccp_support_package_add_to_cart", function() {
+ do_action( 'woocommerce_simple_add_to_cart' );
+});
