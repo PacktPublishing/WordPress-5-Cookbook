@@ -95,13 +95,21 @@
 								<?php
 								if ( has_nav_menu( 'primary' ) ) {
 
+									$roles_menus = array('subscriber' => 'WPCookbookMenu1',
+									'administrator' => 'WPCookbookMenu2') ;
+									$menu_name = 'WPCookbookMenu3';
+									foreach ($roles_menus as $key => $menu) {
+										if(current_user_can($key)){
+											$menu_name = $menu;
+										}
+									}
+									
 									wp_nav_menu(
 										array(
-											'container'  => '',
-											'items_wrap' => '%3$s',
-											'theme_location' => 'primary',
-										)
-									);
+										'menu' => $menu_name,
+										'container' => '',
+										'items_wrap' => '%3$s',
+										'theme_location' => 'primary' ) );
 
 								} elseif ( ! has_nav_menu( 'expanded' ) ) {
 
